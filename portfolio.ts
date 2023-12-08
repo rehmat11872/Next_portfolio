@@ -149,47 +149,47 @@ export const skillsSection: SkillsSectionType = {
         },
       ],
     },
-    {
-      title: 'Blockchain',
-      lottieAnimationFile: '/lottie/skills/ethereum.json', // Path of Lottie Animation JSON File
-      skills: [
-        emoji(
-          '⚡ Experience in developing Smart Contract using Solidity & Ethereum'
-        ),
-        emoji(
-          '⚡ Building Scripts for automated testing & deployment of Smart Contracts using Brownie & Infura'
-        ),
-        emoji(
-          '⚡ Experience of using Openzeppelin Smart Contract Standards & Chainlink Oracles'
-        ),
-        emoji('⚡ Developing NFT Smart Contracts using ERC-721 Token Standard'),
-        emoji(
-          '⚡ Building Dapps with React.js & Solidity using Web3.js, Moralis & IPFS'
-        ),
-      ],
-      softwareSkills: [
-        {
-          skillName: 'Ethereum',
-          iconifyTag: 'logos:ethereum',
-        },
-        {
-          skillName: 'Solidity',
-          iconifyTag: 'logos:solidity',
-        },
-        {
-          skillName: 'Web3js',
-          iconifyTag: 'logos:web3js',
-        },
-        {
-          skillName: 'Metamask',
-          iconifyTag: 'logos:metamask-icon',
-        },
-        {
-          skillName: 'Ganache',
-          iconifyTag: 'logos:ganache-icon',
-        },
-      ],
-    },
+    // {
+    //   title: 'Blockchain',
+    //   lottieAnimationFile: '/lottie/skills/ethereum.json', // Path of Lottie Animation JSON File
+    //   skills: [
+    //     emoji(
+    //       '⚡ Experience in developing Smart Contract using Solidity & Ethereum'
+    //     ),
+    //     emoji(
+    //       '⚡ Building Scripts for automated testing & deployment of Smart Contracts using Brownie & Infura'
+    //     ),
+    //     emoji(
+    //       '⚡ Experience of using Openzeppelin Smart Contract Standards & Chainlink Oracles'
+    //     ),
+    //     emoji('⚡ Developing NFT Smart Contracts using ERC-721 Token Standard'),
+    //     emoji(
+    //       '⚡ Building Dapps with React.js & Solidity using Web3.js, Moralis & IPFS'
+    //     ),
+    //   ],
+    //   softwareSkills: [
+    //     {
+    //       skillName: 'Ethereum',
+    //       iconifyTag: 'logos:ethereum',
+    //     },
+    //     {
+    //       skillName: 'Solidity',
+    //       iconifyTag: 'logos:solidity',
+    //     },
+    //     {
+    //       skillName: 'Web3js',
+    //       iconifyTag: 'logos:web3js',
+    //     },
+    //     {
+    //       skillName: 'Metamask',
+    //       iconifyTag: 'logos:metamask-icon',
+    //     },
+    //     {
+    //       skillName: 'Ganache',
+    //       iconifyTag: 'logos:ganache-icon',
+    //     },
+    //   ],
+    // },
   ],
 };
 
@@ -287,18 +287,24 @@ export const projects: ProjectType[] = [
     github: 'https://github.com/PipelineNetwork/cidb-qlassic-prod',
     link: 'http://app.subcovery.com/accounts/login/?next=/',
   },
+  {
+    name: 'HRM',
+    desc: 'A cutting-edge HRM System designed to streamline and elevate your human resource operations. Our system is a comprehensive solution that empowers organizations to efficiently manage their workforce.',
+    github: 'https://github.com/SamaritanTechnologies/HRM-backend',
+    link: 'https://hrm.samaritan-technologies.com/',
+  },
 ];
 
 export const feedbacks: FeedbackType[] = [
   {
-    name: 'John Smith',
+    name: 'Flavio',
     feedback:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, vel illo. Eum magnam beatae ratione eos natus accusamus unde pariatur fugiat at facilis, modi molestiae? Labore odio sit eligendi. Tenetur.',
+      'Working with Rehmat was a pleasure! Exceptional freelancer who not only met our expectations but exceeded them. Timely, professional, and delivered outstanding results.',
   },
   {
-    name: 'John Smith',
+    name: 'Devis',
     feedback:
-      'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, vel illo. Eum magnam beatae ratione eos natus accusamus unde pariatur fugiat at facilis, modi molestiae? Labore odio sit eligendi. Tenetur.',
+      'Rehmat is a true professional. The quality of work delivered was top-notch, and the attention to detail was impressive. We look forward to collaborating on future projects.',
   },
 ];
 
@@ -307,19 +313,19 @@ export const showContactUs: boolean = true;
 
 // See object prototype on /types/section.ts page
 export const seoData: SEODataType = {
-  title: 'Hanzla Tauqeer',
+  title: 'Rehmat Qadeer',
   description:
-    'A passionate Full Stack Web Developer and Blockchain Developer.',
-  author: 'Hanzla Tauqeer',
-  image: 'https://avatars3.githubusercontent.com/u/59178380?v=4',
-  url: 'https://developer-portfolio-1hanzla100.vercel.app',
+    'A passionate Full Stack Web Developer.',
+  author: 'Rehmat Qadeer',
+  image: 'https://avatars.githubusercontent.com/u/82605080?v=4',
+  url: 'https://rehmat-resume.netlify.app/',
   keywords: [
-    'Hanzla',
-    'Hanzla Tauqeer',
-    '@1hanzla100',
-    '1hanzla100',
+    'Rehmat',
+    'Rehmat Qadeer',
+    '@rehmat11872',
+    'rehmat11872',
     'Portfolio',
-    'Hanzla Portfolio ',
-    'Hanzla Tauqeer Portfolio',
+    'Rehmat Portfolio ',
+    'Rehmat Qadeer Portfolio',
   ],
 };
