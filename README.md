@@ -59,6 +59,7 @@ $ cd developer-portfolio
 
 ```bash
 $ yarn
+$ npm install
 ```
 
 4. Edit `portfolio.js`
@@ -67,6 +68,8 @@ $ yarn
 
 ```bash
 $ yarn dev
+npm run dev
+
 ```
 
 ## Linking Portfolio to Github
@@ -118,3 +121,25 @@ If you can help us with these. Please don't hesitate to open a [pull request](ht
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+
+
+
+## Docker commands
+docker build -t next-portfolio .
+docker run -d \
+  -p 3000:3000 \
+  --name my-portfolio \
+  next-portfolio
+
+## Stop the detached container
+docker stop my-portfolio
+
+## Remove it
+docker rm my-portfolio
+
+## Run in the foreground
+docker run \
+  --rm \
+  --name my-portfolio \
+  -p 3000:3000 \
+  next-portfolio

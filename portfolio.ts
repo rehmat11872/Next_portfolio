@@ -14,10 +14,17 @@ import {
 export const greetings: GreetingsType = {
   name: 'Rehmat Qadeer',
   title: "Hi all, I'm Rehmat",
-  description:
-    "With over 5 years of hands-on experience in full-stack development, I specialize in crafting robust APIs for mobile applications using Python Django, Flask and ReactJS. Proficient in front-end technologies like React, HTML, and CSS.I seamlessly integrate diverse databases—MySQL, PostgreSQL, MongoDB, SQLite",
+  description: `
+    With over 5 years of professional experience as a full-stack developer, I deliver end-to-end solutions across mobile and web platforms. 
+    My expertise includes Flutter for cross-platform apps; designing and consuming RESTful APIs; Python-based frameworks such as FastAPI, Flask, 
+    and Django; and advanced web stacks with React, Next.js, and Node.js. I also build intelligent chatbots with LangChain and manage 
+    data with MySQL, PostgreSQL, MongoDB, and vector databases. Complementing my development skills, I architect CI/CD pipelines, 
+    containerize applications with Docker, and streamline DevOps workflows for rapid, reliable delivery.
+  `,
   resumeLink:
-    'https://drive.google.com/file/d/1zCMO2XQRuajmc46GdHtWasZHc2m7-0Zc/view?usp=sharing',
+    // 'https://drive.google.com/file/d/1zCMO2XQRuajmc46GdHtWasZHc2m7-0Zc/view?usp=sharing',
+    'https://drive.google.com/file/d/1jm8QRftJPOUrs3dXCMufD5vt9yJ7cTge/view?usp=sharing',
+    
 };
 
 export const openSource = {
@@ -48,6 +55,8 @@ export const skillsSection: SkillsSectionType = {
         ),
         emoji('⚡ Building responsive static websites using Next.js'),
         emoji('⚡ Building RESTful APIs in Django & Django REST Framework'),
+        emoji('⚡ Developing cross–platform mobile apps with Flutter'),
+        emoji('⚡ Architecting intelligent chatbots with LangChain'),
       ],
       softwareSkills: [
         {
@@ -87,9 +96,18 @@ export const skillsSection: SkillsSectionType = {
           skillName: 'NPM',
           iconifyTag: 'logos:npm-icon',
         },
+        // {
+        //   skillName: 'Yarn',
+        //   iconifyTag: 'logos:yarn',
+        // },
         {
-          skillName: 'Yarn',
-          iconifyTag: 'logos:yarn',
+          skillName: 'Flutter',
+          iconifyTag: 'logos:flutter',
+        },
+        {
+          skillName: 'Chatbot AI',
+          // you can swap this iconifyTag for any chatbot/robot icon you like
+          iconifyTag: 'mdi:robot',
         },
       ],
     },
@@ -104,6 +122,7 @@ export const skillsSection: SkillsSectionType = {
         emoji(
           '⚡ Building CI/CD pipelines for automated testing & deployment using Github Actions'
         ),
+        
       ],
       softwareSkills: [
         // ? Check README To get icon details
@@ -132,7 +151,7 @@ export const skillsSection: SkillsSectionType = {
           iconifyTag: 'logos:docker-icon',
         },
         {
-          skillName: 'Github Actions',
+          skillName: 'CI-CD',
           iconifyTag: 'logos:github-actions',
         },
         {
@@ -203,7 +222,15 @@ export const SkillBars: SkillBarsType[] = [
     progressPercentage: '90',
   },
   {
-    Stack: 'Programming',
+    Stack: 'Flutter',
+    progressPercentage: '90',
+  },
+  {
+    Stack: 'Chatbot AI',
+    progressPercentage: '95',
+  },
+  {
+    Stack: 'Devops',
     progressPercentage: '80',
   },
 ];
@@ -223,13 +250,37 @@ export const educationInfo: EducationType[] = [
 ];
 
 export const experience: ExperienceType[] = [
-  
 
+
+  {
+    role: 'Senior Python Engineer',
+    company: 'Mentorsol',
+    companyLogo: '/img/icons/common/mentorsol.png',
+    date: 'Oct 2024 - Present',
+    desc: `
+    As Senior Python Engineer at Mentorsol, I lead the end-to-end design, development, and optimization of mission-critical backend services. 
+    I architect scalable microservices and RESTful APIs, enforce clean code through rigorous reviews, and mentor a team of 5+ developers 
+    on best practices in testing, performance tuning, and security. I also drive our CI/CD strategy—building automated pipelines with GitHub 
+    Actions and Docker—and collaborate closely with product and DevOps teams to ensure 99.9% uptime and seamless feature delivery.
+  `,
+  },
+  {
+    role: 'Backend Consultant and AI Authistehst',
+    company: 'Aegasis Labs',
+    companyLogo: '/img/icons/common/aegasis-labs.png',
+    date: 'Apr 2024 - May 2025',
+    desc: `
+    In my remote role at Aegasis Labs, I provided expert backend consultation and led the integration of AI-driven features across client projects. 
+    I designed high-performance APIs using FastAPI and Flask, architected data pipelines for large-scale analytics, and embedded GPT-based 
+    chatbots for enhanced user engagement. My work included running technical workshops on AI best practices, setting up containerized 
+    deployments with Docker/Kubernetes, and advising on cloud architecture to meet SLAs and security requirements.
+  `,
+  },
   {
     role: 'Full Stack Developer',
     company: 'Samaritan Technologies',
     companyLogo: '/img/icons/common/samaritan.png',
-    date: 'Jan 2023 - Jan 2024',
+    date: 'Jan 2023 - Feb 2024',
     desc: 'Worked as full stack developer, Worked as a Fullstack developer,proficient in creating numerous websites using Django, React.js, and various databases such as MySQL, PostgreSQL, and SQLite. My skill set includes designing RESTful APIs and seamlessly integrating external APIs, ensuring comprehensive functionality and user-friendly experiences across the websites I have developed.',
   },
   {
@@ -260,11 +311,35 @@ export const experience: ExperienceType[] = [
 ];
 
 export const projects: ProjectType[] = [
+
+  {
+    name: 'p-optevo-ai',
+    desc: 'An Flask based AI orchestration platform  demonstrating a Optevo’s WorkPods provide scalable, agile workspaces that drive alignment, engagement, and efficiency—enabling seamless collaboration across diverse work environments.',
+    github: 'https://github.com/rehmat11872/flask-p-optevo-ai',
+    link: 'https://www.optevo.com/',
+  },
   {
     name: 'CIDB Malaysia',
-    desc: 'Quality Assessment System for Building Construction Works is an independent method to access and evaluate primarily on the quality of workmanship and building projects based on the standards.',
+    desc: 'A Django based application demonstrating a quality Assessment System for Building Construction Works is an independent method to access and evaluate primarily on the quality of workmanship and building projects based on the standards.',
     github: 'https://github.com/PipelineNetwork/cidb-qlassic-prod',
     link: 'https://qlassic.cidb.gov.my/',
+  },
+  {
+    name: 'Multi Agent Supervisor',
+    desc: 'A FastAPI application demonstrating a multi-agent architecture orchestrated by a central supervisor. It coordinates worker agents including a GDP Agent, Math Agent, and Supervisor Agent to handle domain-specific tasks.',
+    github: 'https://github.com/rehmat11872/Multi_Agent_FastAPI_Langchain',
+  },
+  {
+    name: 'AI-Lawyer Neuracase',
+    desc: 'A React and RestAPI based application demonstrating a elevate your legal practice with AI-powered tools for document summarization, note refinement, PDF management tools, enhanced security, and OCR capabilities.',
+    github: 'https://github.com/rehmat11872/Frontend-ChatGPT',
+    link: 'https://ai-lawyer.neuracase.com/',
+  },
+  {
+    name: 'TunnelKing',
+    desc: 'A Dashboard for managing the desktop application users and related data.',
+    github: 'https://github.com/rehmat11872/TunnelKing',
+    link: 'https://tunnel-king.netlify.app/',
   },
   {
     name: 'Socail media Book app',
@@ -292,6 +367,21 @@ export const projects: ProjectType[] = [
     desc: 'A cutting-edge HRM System designed to streamline and elevate your human resource operations. Our system is a comprehensive solution that empowers organizations to efficiently manage their workforce.',
     github: 'https://github.com/SamaritanTechnologies/HRM-backend',
     link: 'https://hrm.samaritan-technologies.com/',
+  },
+  {
+    name: 'Fitness App',
+    desc: 'A Flutter-based mobile application for tracking workouts, monitoring health metrics, and visualizing progress with interactive charts.',
+    github: 'https://github.com/rehmat11872/Fitness_App',
+  },
+  {
+    name: 'Polify RiderApp',
+    desc: 'A rider companion app built with Flutter, offering real-time order updates, route navigation, and seamless communication for delivery personnel.',
+    github: 'https://github.com/rehmat11872/Polify_RiderApp',
+  },
+  {
+    name: 'PSM New Solar Market',
+    desc: 'A marketplace platform focused on solar energy projects, providing listings, project analytics, and direct inquiry capabilities for stakeholders.',
+    github: 'https://github.com/rehmat11872/psm_new_solar_market',
   },
 ];
 

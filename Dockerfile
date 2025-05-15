@@ -3,11 +3,15 @@ FROM node:16-alpine AS dependencies
 
 RUN apk add --no-cache libc6-compat
 WORKDIR /home/app
-COPY package.json ./
-COPY package-lock.json ./
+# COPY package.json ./
+# COPY package-lock.json ./
+
+# RUN npm i -g yarn --force
+# RUN yarn
+COPY package.json yarn.lock ./
 
 RUN npm i -g yarn --force
-RUN yarn
+RUN yarn --frozen-lockfile
 
 # Builder layer
 FROM node:16-alpine AS builder
