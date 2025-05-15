@@ -25,19 +25,18 @@
 
 // components/DisplayLottie.tsx
 'use client'
+
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import animationData from '../public/lottie/coding.json'  // <-- static import
 
-// dynamically pull in react-lottie (and thus lottie-web) only on the client
+// Only import react-lottie on the client
 const Lottie = dynamic(() => import('react-lottie'), { ssr: false })
 
-interface Props { animationPath: string }
-
-export default function DisplayLottie({ animationPath }: Props) {
+export default function DisplayLottie() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => { setMounted(true) }, [])
 
-  // server & first-hydration: return null (matches server HTML)
   if (!mounted) return null
 
   return (
@@ -45,8 +44,8 @@ export default function DisplayLottie({ animationPath }: Props) {
       options={{
         loop: true,
         autoplay: true,
-        // either `animationData` or `path`:
-        path: animationPath,
+        animationData,                              // <-- use animationData
+        rendererSettings: { preserveAspectRatio: 'xMidYMid slice' },
       }}
       height={400}
       width={400}
