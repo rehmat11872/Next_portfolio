@@ -1,0 +1,138 @@
+/* styles/modern.css */
+@import url('https://fonts.googleapis.com/css2?family=inter:wght@300;400;600;800&family=outfit:wght@300;500;700;900&display=swap');
+
+:root {
+    --font-primary: 'Outfit', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+
+    /* Ultimate Deep Sea Palette */
+    --bg-deep: #020617;
+    /* Void Black */
+    --accent-cyan: #06b6d4;
+    /* Bioluminescent Cyan */
+    --accent-purple: #a855f7;
+    /* Deep Sea Purple */
+    --accent-pink: #ec4899;
+    /* Neon Pink */
+
+    --primary-gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+
+    --glass-surface: rgba(255, 255, 255, 0.02);
+    --glass-highlight: rgba(255, 255, 255, 0.05);
+    --glass-shadow: 0 20px 80px -10px rgba(0, 0, 0, 0.5);
+
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+body {
+    font-family: var(--font-secondary);
+    background-color: transparent;
+    color: var(--text-main);
+    overflow-x: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure no other section blocks the background */
+section,
+.section {
+    background: transparent !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* BORDERLESS GLASS UTILITY */
+.glass-card {
+    background: var(--glass-surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: none;
+    /* TRUE BORDERLESS */
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle inner glow on hover instead of border */
+.glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    opacity: 0.5;
+}
+
+.glass-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    background: var(--glass-highlight);
+    box-shadow: 0 30px 60px -12px rgba(6, 182, 212, 0.15);
+    /* Cyan Glow */
+}
+
+.glass-card:hover::after {
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Text Gradients */
+.text-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    /* Sleeker */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+
+/* Container fix for large screens */
+@media (min-width: 1400px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1400px;
+        /* Wider for premium feel */
+    }
+}
+
+body {
+    padding-bottom: 200px;
+}
+
+/* Performance optimizations */
+.glass-card,
+.project-card,
+.experience-card {
+    will-change: transform;
+}

@@ -13,6 +13,7 @@ const GithubProfileCard = dynamic(
 import { openSource, showContactUs } from '../portfolio';
 import SEO from '../components/SEO';
 import Contact from '../components/ContactUs';
+import Footer from '../components/Footer';
 import { GithubUserType } from '../types';
 
 export default function Home({
@@ -31,8 +32,8 @@ export default function Home({
       <Experience />
       <Feedbacks />
       <Projects />
-      {showContactUs ? <Contact /> : null}
       <GithubProfileCard {...githubProfileData} />
+      <Footer />
     </div>
   );
 }

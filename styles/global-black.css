@@ -1,0 +1,94 @@
+/* AGGRESSIVE BLACK BACKGROUND ENFORCEMENT */
+
+/* Force black on everything */
+html,
+body,
+#__next,
+main,
+.page-wrapper,
+.container,
+.section {
+    background: #020617 !important;
+    background-color: #020617 !important;
+}
+
+/* Texture Overlay for Depth (Film Grain) */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.05;
+    z-index: 9999;
+    pointer-events: none;
+    filter: contrast(120%) brightness(120%);
+}
+
+/* Force white text globally */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-1,
+.display-2,
+.display-3 {
+    color: #ffffff !important;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+p,
+span,
+li {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* CRITICAL VISIBILITY: Ensure major sections are visible */
+section,
+.section,
+main,
+.hero-section,
+.container {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Ensure cards and buttons are visible */
+.card,
+.glass-card,
+[class*="card"],
+.btn,
+button,
+.magnetic-button,
+.premium-btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Kill any light backgrounds */
+* {
+    background-color: transparent !important;
+}
+
+/* Navigation & Footer */
+nav,
+.navbar,
+footer {
+    background: rgba(2, 6, 23, 0.9) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* Links */
+a {
+    color: #fff !important;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #a855f7 !important;
+}

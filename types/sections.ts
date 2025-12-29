@@ -31,7 +31,6 @@ type SoftwareSkillType = {
 
 type SkillType = {
   title: string;
-  lottieAnimationFile: string;
   skills: React.ReactNode[] | string[];
   softwareSkills: SoftwareSkillType[];
 };
@@ -78,6 +77,7 @@ export type ProjectType = {
   desc: string;
   github?: string;
   link?: string;
+  image?: string;
 };
 
 // * FEEDBACK SECTION
