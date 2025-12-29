@@ -31,7 +31,7 @@ export const contact = {};
 
 export const socialLinks: SocialLinksType = {
   url: 'https://rehmat11872.github.io/',
-  linkedin: 'https://www.linkedin.com/in/rehmat-qadeer-577703178/',
+  linkedin: 'https://www.linkedin.com/in/rehmat-qadeer/',
   github: 'https://github.com/rehmat11872',
   instagram: 'https://instagram.com/rehmat_rao1999?igshid=OGQ5ZDc2ODk2ZA==',
   facebook: 'https://www.facebook.com/rehmat.paras?mibextid=ZbWKwL',

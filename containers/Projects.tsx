@@ -15,7 +15,7 @@ const Projects = () => {
 
   return (
     projects && (
-      <section className="section section-lg" ref={ref}>
+      <section id="projects" className="section section-lg" ref={ref}>
         <Container>
           <div className="d-flex flex-column align-items-center justify-content-center mb-5 text-center">
             <motion.div

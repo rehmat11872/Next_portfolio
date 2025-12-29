@@ -16,7 +16,7 @@ const Skills = () => {
 
   return (
     skillsSection && (
-      <section className="section section-lg" ref={ref}>
+      <section id="skills" className="section section-lg" ref={ref}>
         <Container className="text-center">
           {/* Section Header */}
           <motion.div

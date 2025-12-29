@@ -15,7 +15,7 @@ const Education = () => {
 
   return (
     educationInfo && (
-      <section className="section section-lg" ref={ref}>
+      <section id="education" className="section section-lg" ref={ref}>
         <Container>
           {/* Section Header */}
           <div className="text-center mb-5">

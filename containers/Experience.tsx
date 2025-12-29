@@ -14,7 +14,7 @@ const Experience = () => {
 
   return (
     experience && (
-      <section className="section section-lg" ref={ref}>
+      <section id="experience" className="section section-lg" ref={ref}>
         <Container>
           <div className="text-center mb-5">
             <motion.span
