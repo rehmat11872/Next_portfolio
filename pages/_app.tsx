@@ -1,23 +1,19 @@
-import { AppProps } from 'next/app';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/argon-design-system-react.css';
-import '../styles/styles.css';
-import '../styles/animations.css';
-import '../styles/vendor/font-awesome/css/font-awesome.min.css';
-import '../styles/vendor/nucleo/css/nucleo.css';
-import '../styles/modern.css';
-import '../styles/premium-reset.css';
-import '../styles/global-black.css'; // FORCE BLACK BACKGROUND
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
 
-import BackgroundAnimation from '../components/BackgroundAnimation';
+export default function MyApp({ Component, pageProps }: AppProps) {
+  // Initialize theme — default is dark unless user explicitly chose light
+  useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      // Default to dark mode
+      document.documentElement.classList.add('dark');
+      if (!saved) localStorage.setItem('theme', 'dark');
+    }
+  }, []);
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <BackgroundAnimation />
-      <Component {...pageProps} />
-    </>
-  );
+  return <Component {...pageProps} />;
 }
-
-export default MyApp;

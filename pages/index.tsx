@@ -1,53 +1,49 @@
-import dynamic from 'next/dynamic';
-const Navigation = dynamic(() => import('../components/Navigation'));
-const Greetings = dynamic(() => import('../containers/Greetings'));
-const Skills = dynamic(() => import('../containers/Skills'));
-const Proficiency = dynamic(() => import('../containers/Proficiency'));
-const Education = dynamic(() => import('../containers/Education'));
-const Experience = dynamic(() => import('../containers/Experience'));
-const Projects = dynamic(() => import('../containers/Projects'));
-const Feedbacks = dynamic(() => import('../containers/Feedbacks'));
-const GithubProfileCard = dynamic(
-  () => import('../components/GithubProfileCard')
-);
-import { openSource, showContactUs } from '../portfolio';
-import SEO from '../components/SEO';
-import Contact from '../components/ContactUs';
-import Footer from '../components/Footer';
-import { GithubUserType } from '../types';
+import Head from 'next/head';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import Services from '../components/Services';
+import SkillsSection from '../components/SkillsSection';
+import ProjectsSection from '../components/ProjectsSection';
+import ExperienceSection from '../components/ExperienceSection';
+import EducationSection from '../components/EducationSection';
+import Testimonials from '../components/Testimonials';
+import ContactSection from '../components/ContactSection';
+import FooterSection from '../components/FooterSection';
 
-export default function Home({
-  githubProfileData,
-}: {
-  githubProfileData: any;
-}) {
+export default function Home() {
   return (
-    <div>
-      <SEO />
-      <Navigation />
-      <Greetings />
-      <Skills />
-      <Proficiency />
-      <Education />
-      <Experience />
-      <Feedbacks />
-      <Projects />
-      <GithubProfileCard {...githubProfileData} />
-      <Footer />
-    </div>
+    <>
+      <Head>
+        <title>Rehmat Qadeer — Full-Stack Developer & AI Engineer</title>
+        <meta
+          name="description"
+          content="Rehmat Qadeer is an Elite Full-Stack Developer specializing in Python/Django, React/Next.js, AI solutions, and cloud architecture. Available for hire remotely."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Rehmat Qadeer" />
+        <meta property="og:title" content="Rehmat Qadeer — Full-Stack Developer & AI Engineer" />
+        <meta
+          property="og:description"
+          content="Building production-grade web apps, AI integrations, and cloud platforms. 8+ years, 50+ projects."
+        />
+        <meta name="keywords" content="Rehmat Qadeer, Full-Stack Developer, Django, React, Next.js, AI, Python, AWS, Pakistan" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+        <Navbar />
+        <main>
+          <Hero />
+          <Services />
+          <SkillsSection />
+          <ProjectsSection />
+          <ExperienceSection />
+          <EducationSection />
+          <Testimonials />
+          <ContactSection />
+        </main>
+        <FooterSection />
+      </div>
+    </>
   );
-}
-
-// Home.prototype = {
-//   githubProfileData: PropTypes.object.isRequired,
-// };
-
-export async function getStaticProps() {
-  const githubProfileData: GithubUserType = await fetch(
-    `https://api.github.com/users/${openSource.githubUserName}`
-  ).then((res) => res.json());
-
-  return {
-    props: { githubProfileData },
-  };
 }
