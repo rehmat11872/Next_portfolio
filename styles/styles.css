@@ -1,7 +1,0 @@
-body>div:first-child {
-  overflow-x: hidden;
-}
-
-html {
-  scroll-behavior: smooth;
-}

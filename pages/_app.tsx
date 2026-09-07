@@ -1,23 +1,23 @@
-import { AppProps } from 'next/app';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/argon-design-system-react.css';
-import '../styles/styles.css';
-import '../styles/animations.css';
-import '../styles/vendor/font-awesome/css/font-awesome.min.css';
-import '../styles/vendor/nucleo/css/nucleo.css';
-import '../styles/modern.css';
-import '../styles/premium-reset.css';
-import '../styles/global-black.css'; // FORCE BLACK BACKGROUND
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import SmoothScrollProvider from '../components/SmoothScrollProvider';
 
-import BackgroundAnimation from '../components/BackgroundAnimation';
+export default function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    // Default to clean, modern, crisp light theme
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      if (!saved) localStorage.setItem('theme', 'light');
+    }
+  }, []);
 
-function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <BackgroundAnimation />
+    <SmoothScrollProvider>
       <Component {...pageProps} />
-    </>
+    </SmoothScrollProvider>
   );
 }
-
-export default MyApp;

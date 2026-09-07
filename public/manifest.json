@@ -1,21 +1,21 @@
 {
-  "short_name": "Portfolio",
-  "name": "Rehmat's Portfolio",
-  "description": "A passionate Full Stack Web Developer.",
+  "short_name": "Rehmat Qadeer",
+  "name": "Rehmat Qadeer — Senior Full-Stack AI Engineer",
+  "description": "Senior Full-Stack AI Engineer specializing in RAG architectures, multi-agent systems, and scalable Python cloud platforms.",
   "icons": [
     {
-      "src": "./favicon.png",
+      "src": "/favicon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "./favicon.png",
+      "src": "/favicon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#11cdef",
-  "background_color": "#11cdef"
+  "theme_color": "#064e3b",
+  "background_color": "#070b12"
 }
