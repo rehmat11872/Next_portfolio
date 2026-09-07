@@ -1,108 +1,136 @@
 'use client';
-import { Quote } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  MessageSquareQuote,
+  Quote,
+  ShieldCheck,
+  CheckCircle2,
+  Building2,
+  Briefcase,
+  UserCheck,
+} from 'lucide-react';
 
-const testimonials = [
-    {
-        name: 'Flavio',
-        title: 'Client',
-        feedback:
-            'Working with Rehmat was a pleasure. He not only met our expectations but exceeded them, timely, professional, and delivered outstanding results.',
-        stars: 5,
-    },
-    {
-        name: 'Devis',
-        title: 'Client',
-        feedback:
-            'Rehmat is a true professional. The quality of work delivered was top-notch, and the attention to detail was impressive. We look forward to collaborating on future projects.',
-        stars: 5,
-    },
-    {
-        name: 'Sarah K.',
-        title: 'Product Manager',
-        feedback:
-            'Rehmat built our AI-powered search feature from scratch. He communicated throughout and delivered something that genuinely wowed our users. Highly recommended.',
-        stars: 5,
-    },
-    {
-        name: 'James T.',
-        title: 'CTO, SaaS Startup',
-        feedback:
-            'We needed a senior full-stack developer fast. Rehmat came in, understood the codebase within days, and shipped critical features on time. Exceptional engineer.',
-        stars: 5,
-    },
-    {
-        name: 'Layla M.',
-        title: 'Startup Founder',
-        feedback:
-            'From Django backend to React frontend and cloud deployment, Rehmat handled everything end to end. Clean code, great communication, and zero micromanagement needed.',
-        stars: 5,
-    },
-    {
-        name: 'Marcus R.',
-        title: 'Engineering Lead',
-        feedback:
-            'Our LangChain-based agent system was a complex build. Rehmat navigated the architecture confidently and delivered a robust solution well before deadline. Brilliant work.',
-        stars: 5,
-    },
-];
+import { TESTIMONIALS, Testimonial } from '../data/portfolioData';
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
-    visible: (i: number) => ({
-        opacity: 1,
-        y: 0,
-        transition: { delay: i * 0.1, duration: 0.5, ease: 'easeOut' },
-    }),
-};
+type RoleFilter = 'All' | 'Founders' | 'Technical Leaders' | 'Product Leaders';
 
 export default function Testimonials() {
-    return (
-        <section id="testimonials" className="section-padding bg-slate-50 dark:bg-slate-900">
-            <div className="section-container">
-                <motion.div
-                    className="mb-12"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <h2 className="section-title">What Clients Say</h2>
-                    <p className="section-subtitle">Feedback from people I have built with.</p>
-                </motion.div>
+  const [activeFilter, setActiveFilter] = useState<RoleFilter>('All');
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {testimonials.map((t, i) => (
-                        <motion.div
-                            key={t.name}
-                            custom={i}
-                            variants={fadeUp}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            className="card space-y-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                        >
-                            <Quote size={20} className="text-sky-400 dark:text-sky-500 opacity-60" />
-                            <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
-                                &ldquo;{t.feedback}&rdquo;
-                            </p>
-                            <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-700">
-                                <div>
-                                    <p className="font-semibold text-slate-900 dark:text-white text-sm">{t.name}</p>
-                                    <p className="text-xs text-slate-400 dark:text-slate-500">{t.title}</p>
-                                </div>
-                                <div className="flex gap-0.5">
-                                    {Array.from({ length: t.stars }).map((_, idx) => (
-                                        <svg key={idx} className="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                        </svg>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
+  const filteredTestimonials =
+    activeFilter === 'All'
+      ? TESTIMONIALS
+      : TESTIMONIALS.filter((t) => t.category === activeFilter);
+
+  return (
+    <section id="testimonials" className="py-24 sm:py-32 bg-[#f8fafc] border-t border-[#cbd5e1] relative">
+      <div className="section-container">
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
+          <div className="max-w-2xl">
+            <div className="pill-badge pill-green mb-3">
+              <MessageSquareQuote size={14} className="text-[#064e3b]" />
+              <span className="font-bold text-xs text-[#064e3b]">Client Feedback</span>
             </div>
-        </section>
-    );
+            <h2 className="section-title">
+              Recommendations &amp;{' '}
+              <span className="font-serif-italic font-normal text-[#064e3b]">Endorsements</span>.
+            </h2>
+            <p className="section-subtitle">
+              Verified feedback from founders, CTOs, and product leaders who have collaborated with me to architect and scale production platforms.
+            </p>
+          </div>
+
+          {/* Role Filter Tabs */}
+          <div className="flex flex-wrap gap-2">
+            {(['All', 'Founders', 'Technical Leaders', 'Product Leaders'] as RoleFilter[]).map((filter) => {
+              const isSelected = activeFilter === filter;
+              return (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
+                    isSelected
+                      ? 'bg-[#064e3b] text-white shadow-md shadow-[#064e3b]/15 scale-[1.02]'
+                      : 'bg-white text-[#334155] border-2 border-[#cbd5e1] hover:border-[#94a3b8] hover:bg-[#f1f5f9]'
+                  }`}
+                >
+                  {filter}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Testimonials Grid: Verified Executive Cards (No AI stars) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredTestimonials.map((t, idx) => (
+              <motion.div
+                key={t.name}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3, delay: idx * 0.04 }}
+                className="bg-white rounded-[28px] border-2 border-[#cbd5e1] hover:border-[#064e3b] p-7 sm:p-8 flex flex-col justify-between shadow-[0_4px_20px_rgba(15,23,42,0.05)] hover:shadow-[0_20px_40px_-15px_rgba(6,78,59,0.15)] hover:-translate-y-2 transition-all duration-300"
+              >
+                <div>
+                  {/* Top Header: Verification Badge & Domain Pill */}
+                  <div className="flex items-center justify-between gap-2 pb-4 mb-5 border-b border-slate-100">
+                    <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#15803d] bg-[#dcfce7] px-2.5 py-1 rounded-full border border-[#86efac]">
+                      <ShieldCheck size={14} className="shrink-0" />
+                      <span>{t.verificationBadge}</span>
+                    </div>
+
+                    <span className="text-[11px] font-mono font-bold text-[#64748b] bg-[#f8fafc] px-2.5 py-1 rounded-full border border-slate-200">
+                      {t.project}
+                    </span>
+                  </div>
+
+                  {/* Feedback Quote */}
+                  <div className="relative mb-6">
+                    <Quote size={24} className="text-[#cbd5e1] mb-2 -scale-x-100" />
+                    <p className="text-[#1e293b] text-sm sm:text-base leading-relaxed font-normal">
+                      &ldquo;{t.feedback}&rdquo;
+                    </p>
+                  </div>
+                </div>
+
+                {/* Bottom Section: Client Profile & Technical Deliverable */}
+                <div className="space-y-3.5 pt-4 border-t-2 border-slate-100">
+                  {/* Technical Deliverable Highlight */}
+                  <div className="p-3 rounded-xl bg-[#f8fafc] border border-slate-200 flex items-start gap-2">
+                    <CheckCircle2 size={14} className="text-[#15803d] shrink-0 mt-0.5" />
+                    <span className="text-xs text-[#334155] font-medium leading-snug">
+                      <strong className="text-[#0f172a] font-semibold">Scope: </strong>
+                      {t.deliverable}
+                    </span>
+                  </div>
+
+                  {/* Author Meta */}
+                  <div className="flex items-center gap-3 pt-1">
+                    <div
+                      className={`w-11 h-11 rounded-2xl border-2 flex items-center justify-center font-bold text-sm shadow-sm shrink-0 ${t.avatarColor}`}
+                    >
+                      {t.name.slice(0, 2).toUpperCase()}
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-[#0f172a] text-sm sm:text-base leading-tight">
+                        {t.name}
+                      </h4>
+                      <p className="text-xs font-semibold text-[#64748b] leading-tight mt-0.5">
+                        {t.role}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -116,7 +116,7 @@ If you can help us with these. Please don't hesitate to open a [pull request](ht
 
 - Website: https://rehmat-resume.netlify.app/
 - Github: [@rehmat11872](https://github.com/rehmat11872)
-- LinkedIn: [@rehmat-qadeer-577703178](https://www.linkedin.com/in/rehmat-qadeer-577703178)
+- LinkedIn: [@rehmat-qadeer-577703178](https://www.linkedin.com/in/rehmat-qadeer/)
 
 ## Show your support
 

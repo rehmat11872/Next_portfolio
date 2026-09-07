@@ -1,58 +1,38 @@
-import { GraduationCap } from 'lucide-react';
-import { motion } from 'framer-motion';
+'use client';
+import { GraduationCap, Award } from 'lucide-react';
+import { EDUCATION } from '../data/portfolioData';
 
 export default function EducationSection() {
-    return (
-        <section id="education" className="section-padding bg-white dark:bg-slate-800/30">
-            <div className="section-container">
-                <motion.div
-                    className="mb-12"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <h2 className="section-title">Education</h2>
-                    <p className="section-subtitle">Academic foundation in computer science.</p>
-                </motion.div>
-
-                <motion.div
-                    className="max-w-2xl"
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.15, duration: 0.5, ease: 'easeOut' }}
-                >
-                    <div className="card flex gap-5">
-                        <div className="w-10 h-10 rounded-lg bg-sky-50 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <GraduationCap size={20} />
-                        </div>
-                        <div className="space-y-3">
-                            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
-                                <div>
-                                    <h3 className="font-bold text-slate-900 dark:text-white text-base">
-                                        The Superior University, Lahore
-                                    </h3>
-                                    <p className="text-sky-600 dark:text-sky-400 text-sm font-semibold mt-0.5">
-                                        Bachelor of Science in Computer Science
-                                    </p>
-                                </div>
-                                <div className="text-right">
-                                    <span className="text-xs text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-700 px-2.5 py-1 rounded-full font-medium whitespace-nowrap">
-                                        Jun 2017 – Jun 2021
-                                    </span>
-                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 font-medium">CGPA 3.0 / 4.0 · Grade A</p>
-                                </div>
-                            </div>
-                            <div className="flex flex-wrap gap-2 pt-1">
-                                {['Google Developer Student Clubs (GDSC)', 'ACM Student Chapter', 'Coding Club & Hackathons'].map((a) => (
-                                    <span key={a} className="chip text-xs">{a}</span>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
+  return (
+    <section className="py-16 bg-white border-t border-[#cbd5e1]">
+      <div className="section-container">
+        <div className="scale-card p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 border-2 border-[#cbd5e1]">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#ecfdf5] border border-[#a7f3d0] text-[#064e3b] flex items-center justify-center shrink-0 shadow-sm">
+              <GraduationCap size={24} />
             </div>
-        </section>
-    );
+            <div>
+              <div className="text-xs font-mono font-bold text-[#064e3b] uppercase tracking-wider mb-1">
+                Academic Background
+              </div>
+              <h3 className="text-xl font-bold text-[#0f172a]">
+                {EDUCATION.degree}
+              </h3>
+              <p className="text-sm font-semibold text-[#334155] mt-1">
+                {EDUCATION.institution} · <span className="font-mono text-xs text-[#064e3b] font-bold">{EDUCATION.period}</span>
+              </p>
+              <p className="text-xs sm:text-sm text-[#475569] mt-2 max-w-xl leading-relaxed font-normal">
+                {EDUCATION.details}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 self-start md:self-center px-4 py-2 rounded-xl bg-[#ecfdf5] border border-[#a7f3d0] text-[#065f46] text-xs sm:text-sm font-mono font-bold shrink-0 shadow-sm">
+            <Award size={16} className="text-[#15803d]" />
+            <span>CGPA 3.0 / 4.0 · Grade A</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

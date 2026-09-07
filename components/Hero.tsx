@@ -1,164 +1,123 @@
-import { ArrowRight, ChevronDown, FileText } from 'lucide-react';
+'use client';
+import { useState } from 'react';
+import { ArrowRight, FileText, Check, Copy, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const RESUME_URL = 'https://drive.google.com/file/d/1HTkcbw9Nj_rPsGfKU15peuhjNTjNr0i8/view?usp=sharing';
-
-const techStack = [
-    'Python', 'Django', 'FastAPI', 'React', 'Next.js',
-    'TypeScript', 'AWS', 'Docker', 'OpenAI', 'LangChain',
-    'PostgreSQL', 'Kubernetes',
-];
-
-const trustMetrics = [
-    { value: '8+', label: 'Years Experience' },
-    { value: '50+', label: 'Projects Delivered' },
-    { value: '100%', label: 'Client Satisfaction' },
-];
+import { PERSONAL_INFO, CORE_METRICS } from '../data/portfolioData';
 
 export default function Hero() {
-    const scrollToProjects = () => {
-        document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
-    };
-    const scrollToContact = () => {
-        document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-    };
+  const [copied, setCopied] = useState(false);
 
-    return (
-        <section className="relative min-h-screen flex items-center pt-16 bg-slate-50 dark:bg-slate-900 overflow-hidden">
-            {/* Subtle background grid */}
-            <div
-                className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-                style={{
-                    backgroundImage: `linear-gradient(#0ea5e9 1px, transparent 1px), linear-gradient(to right, #0ea5e9 1px, transparent 1px)`,
-                    backgroundSize: '60px 60px',
-                }}
-            />
+  const copyEmail = () => {
+    navigator.clipboard.writeText(PERSONAL_INFO.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
 
-            {/* Glow blobs */}
-            <div className="absolute top-1/4 -left-32 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+  const scrollToSection = (id: string) => {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
-            <div className="section-container w-full py-20 sm:py-28">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    {/* Left: Text */}
-                    <motion.div
-                        className="space-y-8"
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, ease: 'easeOut' }}
-                    >
-                        {/* Badge */}
-                        <motion.div
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-200 dark:border-sky-800 bg-sky-50 dark:bg-sky-900/20 text-sky-700 dark:text-sky-300 text-xs font-semibold"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2, duration: 0.4 }}
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
-                            Full-Stack · AI · Cloud
-                        </motion.div>
-
-                        {/* H1 */}
-                        <div className="space-y-4">
-                            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.1] tracking-tight">
-                                I Build Full-Stack Products{' '}
-                                <span className="text-sky-500 dark:text-sky-400">Powered by AI</span>{' '}
-                                &amp; Cloud
-                            </h1>
-                            <p className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed max-w-lg">
-                                Python/Django · React/Next.js · AWS, delivering production-grade web apps,
-                                AI integrations, and automation workflows for startups and enterprises.
-                            </p>
-                        </div>
-
-                        {/* CTAs */}
-                        <div className="flex flex-wrap gap-3">
-                            <motion.button
-                                onClick={scrollToContact}
-                                className="btn-primary text-sm px-6 py-3"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.97 }}
-                            >
-                                Start a Project
-                                <ArrowRight size={16} />
-                            </motion.button>
-                            <motion.button
-                                onClick={scrollToProjects}
-                                className="btn-secondary text-sm px-6 py-3"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.97 }}
-                            >
-                                View My Work
-                            </motion.button>
-                            <motion.a
-                                href={RESUME_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="btn-secondary text-sm px-6 py-3 inline-flex items-center gap-2"
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.97 }}
-                            >
-                                <FileText size={16} />
-                                Resume
-                            </motion.a>
-                        </div>
-
-                        {/* Trust Metrics */}
-                        <motion.div
-                            className="flex flex-wrap gap-6 pt-2 border-t border-slate-200 dark:border-slate-700"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5, duration: 0.5 }}
-                        >
-                            {trustMetrics.map((m) => (
-                                <div key={m.label}>
-                                    <p className="text-2xl font-bold text-slate-900 dark:text-white">{m.value}</p>
-                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{m.label}</p>
-                                </div>
-                            ))}
-                        </motion.div>
-                    </motion.div>
-
-                    {/* Right: Tech Stack Grid */}
-                    <motion.div
-                        className="hidden lg:block"
-                        initial={{ opacity: 0, x: 40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-                    >
-                        <div className="relative">
-                            <div className="grid grid-cols-3 gap-3">
-                                {techStack.map((tech, i) => (
-                                    <motion.div
-                                        key={tech}
-                                        className="flex items-center justify-center p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm hover:border-sky-300 dark:hover:border-sky-700 hover:shadow-md transition-all duration-200 group"
-                                        initial={{ opacity: 0, y: 16 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.3 + i * 0.06, duration: 0.4 }}
-                                        whileHover={{ y: -3, scale: 1.04 }}
-                                    >
-                                        <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors text-center">
-                                            {tech}
-                                        </span>
-                                    </motion.div>
-                                ))}
-                            </div>
-                            {/* Decorative corners */}
-                            <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-sky-400 opacity-40" />
-                            <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-sky-400 opacity-40" />
-                        </div>
-                    </motion.div>
-                </div>
-
-                {/* Scroll indicator */}
-                <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-400 dark:text-slate-600"
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-                >
-                    <ChevronDown size={20} />
-                </motion.div>
+  return (
+    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-[#f8fafc]">
+      <div className="section-container">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          {/* Status Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex"
+          >
+            <div className="pill-badge pill-green shadow-sm text-xs font-semibold">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#15803d] animate-pulse" />
+              <span>Senior Full-Stack AI Engineer with 8+ Years Hands-On Experience</span>
             </div>
-        </section>
-    );
+          </motion.div>
+
+          {/* High-Contrast Main Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="display-title text-[#0f172a]"
+          >
+            Building production AI systems with{' '}
+            <span className="font-serif-italic font-normal text-[#064e3b] underline decoration-[#064e3b]/30 decoration-2 underline-offset-8">
+              architectural rigor
+            </span>{' '}
+            and clean code.
+          </motion.h1>
+
+          {/* High-Contrast Body Copy (18px, font-medium, Slate-700) */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-lg sm:text-xl text-[#334155] max-w-3xl mx-auto leading-relaxed font-normal"
+          >
+            I architect and ship full-lifecycle software from <strong className="font-semibold text-[#0f172a]">RAG retrieval pipelines</strong>, scalable <strong className="font-semibold text-[#0f172a]">FastAPI and Django backends</strong> to autonomous agent workflows and modern Next.js web applications.
+          </motion.p>
+
+          {/* Action CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-wrap items-center justify-center gap-3.5 pt-2"
+          >
+            <button
+              onClick={() => scrollToSection('#features')}
+              className="btn-forest text-sm font-semibold"
+            >
+              <span>Explore Selected Work</span>
+              <ArrowRight size={16} />
+            </button>
+
+            <a
+              href={PERSONAL_INFO.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-white text-sm font-semibold"
+            >
+              <FileText size={16} />
+              <span>Download CV</span>
+              <ArrowUpRight size={14} className="text-[#334155]" />
+            </a>
+
+            <button
+              onClick={copyEmail}
+              className="btn-white font-mono text-xs font-semibold"
+              title="Click to copy email address"
+            >
+              {copied ? <Check size={14} className="text-[#15803d]" /> : <Copy size={14} />}
+              <span>{copied ? 'Copied: raorehmat11@gmail.com' : PERSONAL_INFO.email}</span>
+            </button>
+          </motion.div>
+
+          {/* High-Contrast Stat Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto"
+          >
+            {CORE_METRICS.map((m) => (
+              <div
+                key={m.label}
+                className="bg-white border-2 border-[#cbd5e1] rounded-2xl p-4 shadow-sm text-center"
+              >
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#0f172a] font-mono">
+                  {m.value}
+                </div>
+                <div className="text-xs sm:text-sm text-[#334155] font-semibold mt-1">
+                  {m.label}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
 }
